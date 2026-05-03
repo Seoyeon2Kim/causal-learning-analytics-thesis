@@ -132,23 +132,30 @@ def derive_targets(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def cumulative_snapshot(df: pd.DataFrame, up_to_week: int) -> pd.DataFrame:
+def cumulative_snapshot(df: pd.DataFrame,
+                        up_to_week: int) -> pd.DataFrame:
     """Aggregate all events up to (and including) up_to_week per student."""
     sub = df[df["week"] <= up_to_week].copy()
+
     numeric_cols = sub.select_dtypes(include=[np.number]).columns.tolist()
-    for col in ["student_id","week","dropout","failure"]:
+    for col in ["student_id", "week", "dropout", "failure"]:
         if col in numeric_cols:
             numeric_cols.remove(col)
+
     snap = (
         sub.groupby("student_id")[numeric_cols]
            .mean()
            .reset_index()
     )
+
     labels = (
-        df.groupby("student_id")[["dropout","failure"]]
+        df.groupby("student_id")[["dropout", "failure"]]
           .max()
           .reset_index()
     )
+    labels["dropout"] = labels["dropout"].astype(int)
+    labels["failure"]  = labels["failure"].astype(int)
+
     snap = snap.merge(labels, on="student_id", how="left")
     return snap
 
