@@ -179,8 +179,22 @@ def evaluate_counterfactuals_df(cf_df: pd.DataFrame) -> pd.DataFrame:
         "diversity":     round(diversity,     4),
     }])
 
+def segment_joint_risk_scalar(p_drop_val: float,
+                               p_fail_val: float,
+                               threshold: float = 0.5) -> str:
+    hi_d = p_drop_val >= threshold
+    hi_f = p_fail_val >= threshold
+    if hi_d and hi_f:
+        return "High-High"
+    elif hi_d and not hi_f:
+        return "High dropout / Low failure"
+    elif not hi_d and hi_f:
+        return "Low dropout / High failure"
+    else:
+        return "Low-Low"
 
 # ── aliases ──────────────────────────────────────────────
 generatesimplecounterfactuals = generate_simple_counterfactuals
 evaluatecounterfactuals       = evaluate_counterfactuals
 segmentjointrisk              = segment_joint_risk
+segment_joint_risk_scalar = segment_joint_risk_scalar
