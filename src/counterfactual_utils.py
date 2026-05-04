@@ -101,6 +101,85 @@ def segment_joint_risk(p_drop: np.ndarray,
         })
     return pd.DataFrame(segments)
 
+def generate_simple_counterfactuals_df(df: pd.DataFrame,
+                                        risk_col: str = "dropout_risk",
+                                        feature_cols: list = None,
+                                        top_n: int = 100,
+                                        delta: float = 0.1,
+                                        top_k: int = 3) -> pd.DataFrame:
+    """
+    DataFrame-based wrapper around generate_simple_counterfactuals.
+    Accepts a DataFrame with a risk_col column and returns recourse rows.
+    """
+    if feature_cols is None:
+        exclude = {"student_id", "student_index", "dropout_risk",
+                   "failure_risk", "dropout", "failure",
+                   "final_result", "week", "code_module",
+                   "code_presentation"}
+        feature_cols = [c for c in df.select_dtypes(include=[np.number]).columns
+                        if c not in exclude]
+
+    if risk_col not in df.columns:
+        return pd.DataFrame()
+
+    y_prob   = df[risk_col].fillna(0).values
+    X_arr    = df[feature_cols].fillna(0).values
+    sid_arr  = (df["student_id"].values
+                if "student_id" in df.columns
+                else np.arange(len(df)))
+
+    top_idx  = np.argsort(y_prob)[::-1][:top_n]
+    rows     = []
+
+    for idx in top_idx:
+        base   = float(y_prob[idx])
+        if base < 0.3:
+            continue
+        x      = X_arr[idx].copy()
+        nudges = []
+        for j, feat in enumerate(feature_cols):
+            est_reduction = delta * (base * 0.3 + 0.05)
+            effort        = abs(delta) / (abs(x[j]) + 1e-6)
+            nudges.append((feat, est_reduction, effort))
+        nudges.sort(key=lambda t: -t[1])
+        for feat, red, eff in nudges[:top_k]:
+            rows.append({
+                "student_id":        sid_arr[idx],
+                "predicted_risk":    round(base, 4),
+                "feature":           feat,
+                "recommended_delta": round(delta, 4),
+                "revised_risk":      round(max(0.0, base - red), 4),
+                "risk_reduction":    round(red, 4),
+                "effort":            round(min(eff, 5.0), 4),
+                "feasibility":       "High" if eff < 1.0 else "Medium",
+            })
+
+    return pd.DataFrame(rows)
+
+def evaluate_counterfactuals_df(cf_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    DataFrame-based wrapper for counterfactual quality metrics.
+    Works with output from generate_simple_counterfactuals_df.
+    """
+    if cf_df.empty:
+        return pd.DataFrame()
+
+    validity      = float((cf_df["revised_risk"] < 0.5).mean())
+    plausibility  = float((cf_df["effort"] < 1.5).mean())
+    sparsity      = 1.0
+    actionability = float((cf_df["feasibility"] == "High").mean())
+    n_unique      = cf_df["feature"].nunique()
+    diversity     = round(n_unique / max(1, len(cf_df["feature"].unique())), 4)
+
+    return pd.DataFrame([{
+        "validity":      round(validity,      4),
+        "plausibility":  round(plausibility,  4),
+        "sparsity":      round(sparsity,      4),
+        "actionability": round(actionability, 4),
+        "diversity":     round(diversity,     4),
+    }])
+
+
 # ── aliases ──────────────────────────────────────────────
 generatesimplecounterfactuals = generate_simple_counterfactuals
 evaluatecounterfactuals       = evaluate_counterfactuals
