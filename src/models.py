@@ -97,10 +97,22 @@ def train_torch_model(model, X_train, y_train,
     Xt = torch.tensor(X_train, dtype=torch.float32)
     yt = torch.tensor(y_train, dtype=torch.float32)
 
+    if yt.ndim == 2:
+        pw0 = float((yt[:, 0] == 0).sum()) / max(1, float((yt[:, 0] == 1).sum()))
+        pw1 = float((yt[:, 1] == 0).sum()) / max(1, float((yt[:, 1] == 1).sum()))
+        bce_drop = nn.BCEWithLogitsLoss(
+            pos_weight=torch.tensor([pw0], dtype=torch.float32).to(device))
+        bce_fail = nn.BCEWithLogitsLoss(
+            pos_weight=torch.tensor([pw1], dtype=torch.float32).to(device))
+    else:
+        pw = float((yt == 0).sum()) / max(1, float((yt == 1).sum()))
+        bce_drop = nn.BCEWithLogitsLoss(
+            pos_weight=torch.tensor([pw], dtype=torch.float32).to(device))
+        bce_fail = bce_drop
+
     loader = DataLoader(TensorDataset(Xt, yt),
                         batch_size=batch_size, shuffle=True)
     opt    = torch.optim.Adam(model.parameters(), lr=lr)
-    bce    = nn.BCEWithLogitsLoss()
 
     for _ in range(epochs):
         model.train()
@@ -109,17 +121,18 @@ def train_torch_model(model, X_train, y_train,
             opt.zero_grad()
             out = model(xb)
             if isinstance(out, tuple):
-                loss = bce(out[0], yb[:, 0]) + bce(out[1], yb[:, 1])
+                loss = bce_drop(out[0], yb[:, 0]) + bce_fail(out[1], yb[:, 1])
             else:
-                loss = bce(out, yb)
+                loss = bce_drop(out, yb)
             if causal_targets is not None and causal_lambda > 0:
-                ct = torch.tensor(causal_targets, dtype=torch.float32).to(device)
+                ct = torch.tensor(
+                    causal_targets, dtype=torch.float32).to(device)
                 if hasattr(model, "causal_proj"):
                     _, (h, _) = model.encoder(xb)
                     reg = ((model.causal_proj(h[-1]) -
                             ct[:xb.size(0)].unsqueeze(1).expand_as(
                                 model.causal_proj(h[-1]))
-                           ) ** 2).mean()
+                            ) ** 2).mean()
                     loss = loss + causal_lambda * reg
             loss.backward()
             opt.step()
