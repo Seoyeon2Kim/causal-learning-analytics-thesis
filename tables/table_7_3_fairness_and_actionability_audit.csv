@@ -1,0 +1,5 @@
+group,alert_precision,recommendation_burden,actionability_score,flag
+Group A,0.0738,1.6802,0.3198,Within tolerance
+Group B,0.0768,1.6781,0.3219,Within tolerance
+Group C,0.0449,1.6846,0.3154,Within tolerance
+Group D,0.043,1.6862,0.3138,Within tolerance

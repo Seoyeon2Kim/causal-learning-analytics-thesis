@@ -1,0 +1,6 @@
+source,target,from,to,weight,abs_weight
+mean_score,dropout,mean_score,dropout,-0.216,0.216
+n_activities,failure,n_activities,failure,-0.1546,0.1546
+sum_click,failure,sum_click,failure,-0.1414,0.1414
+studied_credits,dropout,studied_credits,dropout,0.1405,0.1405
+n_submissions,dropout,n_submissions,dropout,-0.1204,0.1204

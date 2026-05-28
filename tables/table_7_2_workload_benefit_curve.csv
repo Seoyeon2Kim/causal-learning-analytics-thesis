@@ -1,0 +1,15 @@
+capacity,policy,net_benefit
+10,Probability-only ranking,0.9773
+10,Causal-actionable ranking,0.996
+20,Probability-only ranking,0.9714
+20,Causal-actionable ranking,0.9947
+30,Probability-only ranking,0.9633
+30,Causal-actionable ranking,0.9962
+40,Probability-only ranking,0.9656
+40,Causal-actionable ranking,0.9967
+50,Probability-only ranking,0.9668
+50,Causal-actionable ranking,0.9972
+75,Probability-only ranking,0.9684
+75,Causal-actionable ranking,0.9966
+100,Probability-only ranking,0.9663
+100,Causal-actionable ranking,0.9953

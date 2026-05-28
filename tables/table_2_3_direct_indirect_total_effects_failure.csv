@@ -1,0 +1,8 @@
+behavior,direct_effect,indirect_effect,total_effect,primary_role
+late_rate,0.3079,-0.0195,0.2884,Cause
+num_of_prev_attempts,0.0939,0.0039,0.0978,Cause
+n_submissions,0.1071,-0.016,0.0911,Cause
+mean_score,-0.228,0.2856,0.0576,Mixed
+n_activities,-0.0047,-0.0003,-0.005,Cause
+sum_click,-0.0009,-0.0001,-0.001,Cause
+studied_credits,-0.0001,0.0,-0.0001,Cause

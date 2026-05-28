@@ -1,0 +1,3 @@
+approach,mean_AUROC,calibration,interpretability,intervention_utility
+Separate dual models,0.7572,0.0186,0.58,0.64
+Joint causal model,0.738,0.0174,0.83,0.86

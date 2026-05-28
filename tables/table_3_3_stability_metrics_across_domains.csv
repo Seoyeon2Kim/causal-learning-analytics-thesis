@@ -1,0 +1,3 @@
+model,mean_AUROC,std_AUROC,explanation_drift,graph_consistency
+XGBoost baseline,0.707,0.0343,0.3,0.42
+Proposed causal-regularized,0.7073,0.0198,0.16,0.73

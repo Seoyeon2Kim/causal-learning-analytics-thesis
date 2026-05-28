@@ -1,0 +1,5 @@
+model,predictive_strength,intervention_usefulness
+Causal-Temporal,0.7252833333333334,0.86
+LSTM,0.7249833333333333,0.58
+Transformer,0.6925499999999999,0.62
+XGBoost,0.7343166666666666,0.55

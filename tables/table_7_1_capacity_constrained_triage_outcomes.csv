@@ -1,0 +1,3 @@
+policy,students_contacted,true_at_risk_reached,actionable_cases,false_non_actionable,net_utility
+Probability-only ranking,50,50,47,1,0.9668
+Causal-actionable ranking,50,50,50,0,0.9972

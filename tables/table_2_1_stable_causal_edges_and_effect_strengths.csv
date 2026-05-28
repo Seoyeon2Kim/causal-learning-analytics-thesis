@@ -1,0 +1,6 @@
+source,target,from,to,weight,abs_weight,edge,bootstrap_stability,stable
+mean_score,dropout,mean_score,dropout,-0.216,0.216,mean_score - dropout,1.0,True
+n_activities,failure,n_activities,failure,-0.1546,0.1546,n_activities - failure,0.7333,True
+sum_click,failure,sum_click,failure,-0.1414,0.1414,sum_click - failure,0.1333,False
+studied_credits,dropout,studied_credits,dropout,0.1405,0.1405,studied_credits - dropout,0.1,False
+n_submissions,dropout,n_submissions,dropout,-0.1204,0.1204,n_submissions - dropout,0.0,False
