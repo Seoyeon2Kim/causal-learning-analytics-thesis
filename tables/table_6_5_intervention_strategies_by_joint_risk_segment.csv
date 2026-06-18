@@ -1,0 +1,5 @@
+risk_segment,n_students,mean_dropout_risk,mean_failure_risk,observed_any_risk_rate,observed_dropout_rate,observed_failure_rate,recommended_action
+High dropout / High failure,70,0.5710311182389971,0.5423706581886999,1.0,0.4857142857142857,0.5142857142857142,high-priority advising plus academic support
+High dropout / Low failure,2144,0.7962745248235098,0.2013937529110662,0.9967350746268657,0.8055037313432836,0.1912313432835821,retention coaching and engagement outreach
+Low dropout / High failure,393,0.2743880286007809,0.5705947085074945,0.8422391857506362,0.2595419847328244,0.5826972010178118,academic tutoring and assessment support
+Low dropout / Low failure,5542,0.1294426124783261,0.19250265524050625,0.3182966438108986,0.12017322266329845,0.19812342114760015,routine monitoring

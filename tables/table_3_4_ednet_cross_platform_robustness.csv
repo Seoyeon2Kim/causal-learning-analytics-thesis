@@ -1,2 +1,0 @@
-platform,n_questions,dropout_rate,failure_rate,xgboost_auroc,causal_temporal_auroc,auroc_delta
-EdNet (KT3-4),11551,0.32,0.054,0.9998,0.9996,-0.0001

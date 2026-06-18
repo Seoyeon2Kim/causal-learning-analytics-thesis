@@ -1,8 +1,0 @@
-feature,dropout_contribution,failure_contribution,contribution_type
-mean_score,-0.216,-0.0561,Dropout-specific
-n_submissions,-0.1204,0.0407,Dropout-specific
-studied_credits,0.1405,-0.0103,Dropout-specific
-late_rate,-0.002,0.0691,Failure-specific
-n_activities,-0.0449,-0.1546,Failure-specific
-num_of_prev_attempts,0.0741,0.0951,Failure-specific
-sum_click,-0.0612,-0.1414,Failure-specific

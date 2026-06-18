@@ -1,0 +1,3 @@
+target,mean_auc_delta_joint_minus_separate,ci_low,ci_high,p_joint_better,interpretation
+dropout,0.0,0.0,0.0,0.0,positive delta favors joint model; negative delta favors separate model
+failure,0.00022757354835394573,-0.002846530589570692,0.003160661640903694,0.567,positive delta favors joint model; negative delta favors separate model

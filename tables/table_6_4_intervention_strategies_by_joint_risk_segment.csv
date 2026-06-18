@@ -1,5 +1,0 @@
-risk_segment,mean_dropout_risk,mean_failure_risk,student_count,recommended_action
-High dropout / Low failure,0.676913,0.3170695,925,Retention coaching
-High-High,0.74440604,0.5416804,147,High-priority advising
-Low dropout / High failure,0.38365778,0.52918863,120,Academic tutoring
-Low-Low,0.16822904,0.23287478,5315,Routine nudges

@@ -1,0 +1,3 @@
+target,validity,plausibility,mean_sparsity,median_effort,mean_absolute_risk_reduction,mean_relative_risk_reduction,actionable_cases,evaluated_cases
+dropout,0.6,1.0,1.0,0.9999999750000007,0.19805356264420873,0.2048040164998091,90,150
+failure,0.92,1.0,1.4866666666666666,0.9999999784172667,0.25458866658054197,0.40434657605875013,138,150

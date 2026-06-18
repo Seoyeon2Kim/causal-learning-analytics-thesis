@@ -1,0 +1,41 @@
+mean_predicted_risk,observed_rate,n,approach,target
+0.03377560958651928,0.025766871165644172,815,Separate single-outcome models,dropout
+0.05376333793226451,0.046625766871165646,815,Separate single-outcome models,dropout
+0.07462122507468517,0.05644171779141104,815,Separate single-outcome models,dropout
+0.09946867671795909,0.08834355828220859,815,Separate single-outcome models,dropout
+0.13212137981861433,0.1116564417177914,815,Separate single-outcome models,dropout
+0.18321176399208675,0.17076167076167076,814,Separate single-outcome models,dropout
+0.3059148763297737,0.3239263803680982,815,Separate single-outcome models,dropout
+0.5545062106444351,0.5496932515337424,815,Separate single-outcome models,dropout
+0.7912963866779538,0.7914110429447853,815,Separate single-outcome models,dropout
+0.9278523428665884,0.9386503067484663,815,Separate single-outcome models,dropout
+0.02967142519447266,0.02822085889570552,815,Separate single-outcome models,failure
+0.05340211202827509,0.03680981595092025,815,Separate single-outcome models,failure
+0.07894033101156553,0.07239263803680981,815,Separate single-outcome models,failure
+0.11120766934786755,0.13006134969325153,815,Separate single-outcome models,failure
+0.15190225988377704,0.1607361963190184,815,Separate single-outcome models,failure
+0.20101188184493235,0.20270270270270271,814,Separate single-outcome models,failure
+0.25827251240177757,0.2748466257668712,815,Separate single-outcome models,failure
+0.32400981717237914,0.33865030674846625,815,Separate single-outcome models,failure
+0.40349907208497926,0.38773006134969323,815,Separate single-outcome models,failure
+0.5315041583724308,0.5435582822085889,815,Separate single-outcome models,failure
+0.03377560958651928,0.025766871165644172,815,Joint multi-output stable model,dropout
+0.05376333793226451,0.046625766871165646,815,Joint multi-output stable model,dropout
+0.07462122507468517,0.05644171779141104,815,Joint multi-output stable model,dropout
+0.09946867671795909,0.08834355828220859,815,Joint multi-output stable model,dropout
+0.13212137981861433,0.1116564417177914,815,Joint multi-output stable model,dropout
+0.18321176399208675,0.17076167076167076,814,Joint multi-output stable model,dropout
+0.3059148763297737,0.3239263803680982,815,Joint multi-output stable model,dropout
+0.5545062106444351,0.5496932515337424,815,Joint multi-output stable model,dropout
+0.7912963866779538,0.7914110429447853,815,Joint multi-output stable model,dropout
+0.9278523428665884,0.9386503067484663,815,Joint multi-output stable model,dropout
+0.0343538749169219,0.029447852760736196,815,Joint multi-output stable model,failure
+0.05818045475580895,0.04785276073619632,815,Joint multi-output stable model,failure
+0.08297007369631847,0.05521472392638037,815,Joint multi-output stable model,failure
+0.11390470176341722,0.1312883435582822,815,Joint multi-output stable model,failure
+0.1538067738543778,0.1656441717791411,815,Joint multi-output stable model,failure
+0.20520559093717564,0.20884520884520885,814,Joint multi-output stable model,failure
+0.2618209864960939,0.26993865030674846,815,Joint multi-output stable model,failure
+0.3259764582556318,0.3202453987730061,815,Joint multi-output stable model,failure
+0.39946489315783434,0.41595092024539876,815,Joint multi-output stable model,failure
+0.5251171660213931,0.5312883435582823,815,Joint multi-output stable model,failure

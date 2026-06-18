@@ -1,0 +1,3 @@
+target,n,validity,mean_base_risk,mean_new_risk,mean_risk_reduction,pct_below_floor,pct_rel_reduction_20pct,validity_note
+dropout,150,0.6,0.9681426450428762,0.7700890823986675,0.19805356264420873,0.0,0.6,"validity=0.60: 0% reach risk<0.40, 60% achieve >=20% relative reduction. Valid under model-space definition; real-world effect requires causal evidence from RQ2."
+failure,150,0.92,0.6286398804851565,0.37405121390461465,0.25458866658054197,0.5733333333333334,0.92,"validity=0.92: 57% reach risk<0.40, 92% achieve >=20% relative reduction. Valid under model-space definition; real-world effect requires causal evidence from RQ2."
